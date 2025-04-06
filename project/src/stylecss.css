@@ -1,0 +1,29 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  background-color: linear-gradient(to right, #00AAFF, #00FF6C);
+}
+.calculator-grid{
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+}
+.span-two{
+  grid-column: span 2;
+}
+.outPut{
+  grid-column: 1 / -1;
+  background-color: rgb(0, 0, 75);
+  display: flex;
+}
+.outPut .previous-operand{
+  color: rgb(255, 255, 75);
+  font-size: 1.5rem;
+}
+.outPut .current-operand{
+  color: white;
+  font-size: 2.5rem;
+}
