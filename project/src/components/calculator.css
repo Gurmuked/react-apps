@@ -11,6 +11,16 @@ body{
   grid-template-columns: repeat(4, 6rem);
   grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 }
+.calculator-grid > button{
+  cursor: pointer;
+  font-size: 2rem;
+  outline: none;
+  background-color: rgb(255, 255, 75);
+}
+.calculator-grid > button:hover,
+.calculator-grid > button:active{
+  background-color: rgb(255, 255, 255, .9);
+}
 .span-two{
   grid-column: span 2;
 }
@@ -18,6 +28,11 @@ body{
   grid-column: 1 / -1;
   background-color: rgb(0, 0, 75);
   display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: .75rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .outPut .previous-operand{
   color: rgb(255, 255, 75);
