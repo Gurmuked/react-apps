@@ -6,6 +6,7 @@ body{
   background-color: linear-gradient(to right, #00AAFF, #00FF6C);
 }
 .calculator-grid{
+  justify-content: center;
   display: grid;
   margin-top: 2rem;
   grid-template-columns: repeat(4, 6rem);
@@ -30,7 +31,7 @@ body{
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  padding: .75rem;
+  padding: 1.5rem;
   word-wrap: break-word;
   word-break: break-all;
 }
@@ -40,5 +41,5 @@ body{
 }
 .outPut .current-operand{
   color: white;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
