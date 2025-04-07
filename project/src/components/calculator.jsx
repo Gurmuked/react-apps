@@ -11,21 +11,90 @@ import './calculator.css'
   EVALUATE: 'evaluate',
 }
 
-function reducer(state, {type, payload}){
-  switch(type){
+function reducer(state, { type, payload }) {
+  switch(type) {
     case ACTIONS.ADD_DIGIT:
-      return { 
-        ...state,
-        currentOperation: `${state.currentOperation || ""}${payload.digit}`
-      };
-      case ACTIONS.CHOOSE_OPERATION:
+      if (payload.digit === "0" && state.currentOperation === "0") return state;
+      if (payload.digit === "." && state.currentOperation?.includes(".")) return state;
       return {
         ...state,
-        previousOperation: state.currentOperation,
-        currentOperation: null,
-        operation: payload.operation
+        currentOperation: `${state.currentOperation || ""}${payload.digit}`,
       };
+    
+    case ACTIONS.CHOOSE_OPERATION:
+      if (state.currentOperation == null && state.previousOperation == null) {
+        return state;
+      }
+      if (state.previousOperation == null) {
+        return {
+          ...state,
+          operation: payload.operation,
+          previousOperation: state.currentOperation,
+          currentOperation: null,
+        };
+      }
+      return {
+        ...state,
+        previousOperation: evaluate(state),
+        operation: payload.operation,
+        currentOperation: null,
+      };
+    
+    case ACTIONS.CLEAR:
+      return {};
+    
+    case ACTIONS.DELETE_DIGIT:
+      if(state.overwrite){
+        return{
+          ...state,
+          overwrite: false,
+          currentOperation: null
+        }
+
+      }
+      if (state.currentOperation == null) return state;
+      if (state.currentOperation.length === 1) {
+        return { ...state, currentOperation: null };
+      }
+      return {
+        ...state,
+        currentOperation: state.currentOperation.slice(0, -1),
+      };
+    
+    case ACTIONS.EVALUATE:
+      if (state.operation == null || state.currentOperation == null || state.previousOperation == null) {
+        return state;
+      }
+      return {
+        ...state,
+        previousOperation: null,
+        operation: null,
+        currentOperation: evaluate(state),
+      };
+    
   }
+}
+
+function evaluate({ currentOperation, previousOperation, operation }) {
+  const prev = parseFloat(previousOperation);
+  const current = parseFloat(currentOperation);
+  if (isNaN(prev) || isNaN(current)) return "";
+  let computation = "";
+  switch (operation) {
+    case "+":
+      computation = prev + current;
+      break;
+    case "-":
+      computation = prev - current;
+      break;
+    case "*":
+      computation = prev * current;
+      break;
+    case "/":
+      computation = prev / current;
+      break;
+  }
+  return computation.toString();
 }
 
 function Calculator() {
@@ -37,11 +106,11 @@ const [{currentOperation, previousOperation, operation}, dispatch] =
   return (
     <div className="calculator-grid">
       <div className='outPut'>
-        <div className='previous operand'></div>
-        <div className='current-operand'></div>
+        <div className='previous operand'>{previousOperation} {operation}</div>
+        <div className='current-operand'>  {currentOperation}</div>
       </div>
-      <button className='span-two'>AC</button>
-      <button >DE</button>
+      <button className='span-two' onClick={()=>dispatch({type: ACTIONS.CLEAR})}>AC</button>
+      <button  onClick={()=>dispatch({type: ACTIONS.DELETE_DIGIT})}>DEL</button>
       <OperationButton operation ="/" dispatch={dispatch} />
       <DigitButton digit='1' dispatch={dispatch} />
       <DigitButton digit='2' dispatch={dispatch} />
@@ -57,7 +126,7 @@ const [{currentOperation, previousOperation, operation}, dispatch] =
       <OperationButton operation ="-" dispatch={dispatch} />
       <DigitButton digit='.' dispatch={dispatch} />
       <DigitButton digit='0' dispatch={dispatch} />
-      <button className='span-two'>=</button>
+      <button className='span-two'  onClick={()=>dispatch({type: ACTIONS.EVALUATE})}>=</button>
     </div>
   );
 }
