@@ -5,27 +5,27 @@ import './login.css'
  function login() {
   return (
     <div className='wrapper'>
-      <div className="login">
+      <div className="form-box login">
         <form>
           <h1>LOGIN</h1>
           <div className='inputBox'>
             <input type="text"
-                     placeholder="Username" className='inputclass'/>
-                     <FaUser />
+                     placeholder="Username" />
+                     <FaUser className='icons'/>
           </div>
           <div className='inputBox'>
-            <input className='inputclass' type="password"
+            <input  type="password"
                      placeholder="password" />
-                     <FaLock />
+                     <FaLock className='icons'/>
           </div>
-          
-
-          <button type='submit'className='submit'>Login</button>
-          <div className='rember forgot'>
+          <div className='rember-forgot'>
             <label><input type="checkbox"
                     />Remember Me</label>
                     <a href="#">  forgot password</a>
           </div>
+
+          <button type='submit'className='submit'>Login</button>
+        
           <div className='forgot'>
             <p>Don't have an account?
               <a href='#'>Register</a>
