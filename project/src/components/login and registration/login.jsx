@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaUser, FaLock } from "react-icons/fa";
 import './login.css'
 
  function login() {
@@ -10,10 +11,12 @@ import './login.css'
           <div className='inputBox'>
             <input type="text"
                      placeholder="Username" className='inputclass'/>
+                     <FaUser />
           </div>
           <div className='inputBox'>
             <input className='inputclass' type="password"
                      placeholder="password" />
+                     <FaLock />
           </div>
           
 
