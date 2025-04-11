@@ -18,15 +18,15 @@ import './login.css'
                      placeholder="password" />
                      <FaLock className='icons'/>
           </div>
-          <div className='rember-forgot'>
+          <div className='remember-forgot'>
             <label><input type="checkbox"
                     />Remember Me</label>
                     <a href="#">  forgot password</a>
           </div>
 
-          <button type='submit'className='submit'>Login</button>
+          <button type='submit'>Login</button>
         
-          <div className='forgot'>
+          <div className='Register-link'>
             <p>Don't have an account?
               <a href='#'>Register</a>
             </p>
