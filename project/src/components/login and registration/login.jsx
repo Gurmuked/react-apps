@@ -1,12 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import './login.css'
 
- function login() {
+ const LoginRegister = () =>{
+
+  const [action, setAction] = useState('');
+
+  const registerLink = () =>{
+    setAction('active');
+  };
+
+  const loginLink = () =>{
+    setAction('');
+  };
+
   return (
-    <div className='wrapper'>
-      <div className="form-box login">
+    <div className={`wrapper${action}`}>
+      <div className="form-box Login">
         <form>
           <h1>LOGIN</h1>
           <div className='inputBox'>
@@ -29,7 +41,7 @@ import './login.css'
         
           <div className='Register-link'>
             <p>Don't have an account?
-              <a href='#'>Register</a>
+              <a href='#' onClick={registerLink}>Register</a>
             </p>
           </div>
 
@@ -37,7 +49,7 @@ import './login.css'
       </div>
 
 
-      <div className="form-box Register">
+      <div className="form-box Register" >
         <form>
           <h1>REGISTER</h1>
           <div className='inputBox'>
@@ -64,7 +76,7 @@ import './login.css'
         
           <div className='Register-link'>
             <p>I Already have an account.
-              <a href='#'>Login</a>
+              <a href='#' onClick={loginLink}>Login</a>
             </p>
           </div>
 
@@ -73,4 +85,4 @@ import './login.css'
     </div>
   )
 }
-export default login;
+export default LoginRegister;
