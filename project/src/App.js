@@ -6,7 +6,7 @@ import LoginRegister from './components/login and registration/login.jsx';
 function App() {
   return (
     <div>
-      <Calculator />
+      <Calculator /> 
       <LoginRegister />
     </div>
   );

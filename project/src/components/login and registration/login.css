@@ -9,24 +9,30 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgb(115, 103, 194);
+  background-image: url("../asset/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .wrapper{
 
   width: 420px;
   height: 450px;
-  background-color: rgb(32, 92, 58);
+  background-color: transparent;
+  border: 1px solid rgb(145, 145, 145);
+  box-shadow:0 0 10px rgb(0, 0, 0, .2);
+  backdrop-filter: blur(5px);
   border-radius: 10px;
   color: #fff;
   display: flex;
   align-items: center;
-  overflow: hidden;
   position: relative;
- transition: height .2s ease;
+  overflow: hidden;
+  transition: height .2s ease;
 }
-/* .wrapper.active{
+.wrapper.active{
   height: 520px;
-} */
+} 
 .wrapper .form-box{
   width: 100%;
   padding: 40px;

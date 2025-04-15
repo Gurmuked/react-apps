@@ -17,18 +17,18 @@ import './login.css'
   };
 
   return (
-    <div className={`wrapper${action}`}>
+    <div className={`wrapper ${action}`}>
       <div className="form-box Login">
         <form>
           <h1>LOGIN</h1>
           <div className='inputBox'>
             <input type="text"
-                     placeholder="Username" />
+                     placeholder="Username" required/>
                      <FaUser className='icons'/>
           </div>
           <div className='inputBox'>
             <input  type="password"
-                     placeholder="password" />
+                     placeholder="password" required/>
                      <FaLock className='icons'/>
           </div>
           <div className='remember-forgot'>
@@ -54,17 +54,17 @@ import './login.css'
           <h1>REGISTER</h1>
           <div className='inputBox'>
             <input type="text"
-                     placeholder="Username" />
+                     placeholder="Username" required/>
                      <FaUser className='icons'/>
           </div>
           <div className='inputBox'>
             <input type="email"
-                     placeholder="email" />
+                     placeholder="email" required/>
                      <MdEmail className='icons'/>
           </div>
           <div className='inputBox'>
             <input  type="password"
-                     placeholder="password" />
+                     placeholder="password" required/>
                      <FaLock className='icons'/>
           </div>
           <div className='remember-forgot'>
